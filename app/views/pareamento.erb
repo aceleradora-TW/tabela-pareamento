@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pareamento</title>
+</head>
+<body>
+
+  <table>
+    <tr>
+      <th>
+        <% @students.each do |aluno| %>
+        <%= aluno.name_students %>
+        <% end %>
+      </th>
+    </tr>
+  </table>
+
+  <% @pairs.each do |aluno| %>
+  <br>
+  <%= aluno.name_pairs %>
+  <% end %>
+  <br><br><br>
+
+
+  <form action="/count" method="post" name="user">
+    Students:
+    <select class="" name="user[name_students]">
+      <% @students.each do |aluno| %>
+      <option value="<%= aluno.id %>">
+        <%= aluno.name_students %>
+      </option>
+      <% end %>
+    </select>
+
+    Pairs:
+    <select class="" name="user[name_pairs]">
+      <% @pairs.each do |aluno| %>
+      <option value="<%= aluno.id %>">
+        <%= aluno.name_pairs %>
+      </option>
+      <% end %>
+    </select>
+
+
+    <input type="submit" name="name" value="Enviar">
+  </form>
+</body>
+</html>
