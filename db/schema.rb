@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321173656) do
+ActiveRecord::Schema.define(version: 20170328163731) do
 
   create_table "pairings", force: :cascade do |t|
     t.integer "student_id"
     t.integer "pair_id"
-    t.integer "count"
+    t.integer "count",      default: 0
     t.index ["pair_id"], name: "index_pairings_on_pair_id"
     t.index ["student_id"], name: "index_pairings_on_student_id"
   end

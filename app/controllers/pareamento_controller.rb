@@ -1,6 +1,7 @@
 get '/' do
   @students = Student.all
   @pairs = Pair.all
+  @pairings = Pairing.all
 
   erb :pareamento
 end

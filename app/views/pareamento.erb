@@ -2,48 +2,113 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+
   <title>Pareamento</title>
 </head>
 <body>
 
-  <table>
-    <tr>
-      <th>
-        <% @students.each do |aluno| %>
-        <%= aluno.name_students %>
+
+
+  <section class="section">
+    <div class="tablePair">
+      <table>
+        <% @pairs.each do |aluno| %>
+        <tr>
+          <%= aluno.name_pairs %>
+        </tr>
         <% end %>
-      </th>
-    </tr>
-  </table>
 
-  <% @pairs.each do |aluno| %>
-  <br>
-  <%= aluno.name_pairs %>
-  <% end %>
-  <br><br><br>
+        <% @students.each do |aluno| %>
+        <tr>
+          <div class="Student">
+            <%= aluno.name_students %>
+          </div>
+        </tr>
+        <% end %>
+      </table>
 
 
-  <form action="/count" method="post" name="user">
-    Students:
-    <select class="" name="user[name_students]">
-      <% @students.each do |aluno| %>
-      <option value="<%= aluno.id %>">
-        <%= aluno.name_students %>
-      </option>
+      <% @pairings.each do |pairing| %>
+      <%= pairing.count %>
       <% end %>
-    </select>
-
-    Pairs:
-    <select class="" name="user[name_pairs]">
-      <% @pairs.each do |aluno| %>
-      <option value="<%= aluno.id %>">
-        <%= aluno.name_pairs %>
-      </option>
-      <% end %>
-    </select>
 
 
-    <input type="submit" name="name" value="Enviar">
-  </form>
+      <form action="/count" method="post" name="user">
+        Students:
+        <select class="" name="user[name_students]">
+          <% @students.each do |aluno| %>
+          <option value="<%= aluno.id %>">
+            <%= aluno.name_students %>
+          </option>
+          <% end %>
+        </select>
+
+        Pairs:
+        <select class="" name="user[name_pairs]">
+          <% @pairs.each do |aluno| %>
+          <option value="<%= aluno.id %>">
+            <%= aluno.name_pairs %>
+          </option>
+          <% end %>
+        </select>
+
+
+        <input type="submit" name="name" value="Enviar">
+      </form>
+
+    </div>
+
+
+    <div class="Container">
+      <table>
+
+        <div class="Slim">
+          <div class="BoxSlim"></div>
+          <% @pairs.each do |aluno| %>
+          <div class="Names">
+            <%= aluno.name_pairs %>
+          </div>
+          <% end %>
+        </div>
+
+        <div class="Fat">
+
+          <div class="BoxSlim">
+            <% @students.each do |aluno| %>
+            <div class="Names">
+              <%= aluno.name_students %>
+            </div>
+            <% end %>
+          </div>
+          <div class="BoxFat">
+
+            <br>
+
+
+            <% cont = 0 %>
+            <% for i in 1..12 %>
+              <% for k in 1..i %>
+                <div class="Pareamento">
+                  X
+                </div>
+              <% end %>
+
+              <% for j in i..11 %>
+              <% cont += 1 %>
+                <div class="Pareamento">
+                  <%=@pairings[cont].count %>
+                </div>
+              <% end %>
+
+
+            <% end %>
+
+          </div>
+        </div>
+      </table>
+
+    </div>
+  </section>
 </body>
 </html>

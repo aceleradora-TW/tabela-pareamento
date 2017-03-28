@@ -23,3 +23,9 @@ Student.create(name_students: 'Fernanda')
 Student.create(name_students: 'Bruna')
 Student.create(name_students: 'Marlon')
 Student.create(name_students: 'Matheus')
+
+for i in 1..12 do
+  for j in i..12 do
+    Pairing.create(student_id: i, pair_id: j)
+  end
+end
