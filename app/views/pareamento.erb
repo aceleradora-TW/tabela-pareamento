@@ -11,66 +11,50 @@
 
 
   <section class="section">
-    <div class="tablePair">
-      <table>
-        <% @pairs.each do |aluno| %>
-        <tr>
-          <%= aluno.name_pairs %>
-        </tr>
-        <% end %>
 
+
+    <form action="/count" method="post" name="user">
+      Students:
+      <select class="Select" name="user[name_students]">
         <% @students.each do |aluno| %>
-        <tr>
-          <div class="Student">
-            <%= aluno.name_students %>
-          </div>
-        </tr>
+        <option value="<%= aluno.id %>">
+          <%= aluno.name_students %>
+        </option>
         <% end %>
-      </table>
+      </select>
+
+      Pairs:
+      <select class="Select" name="user[name_pairs]">
+        <% @pairs.each do |aluno| %>
+        <option value="<%= aluno.id %>">
+          <%= aluno.name_pairs %>
+        </option>
+        <% end %>
+      </select>
 
 
-      <% @pairings.each do |pairing| %>
-      <%= pairing.count %>
-      <% end %>
+      <input class="Button" type="submit" name="name" value="Enviar">
+    </form>
+
+  </div>
 
 
-      <form action="/count" method="post" name="user">
-        Students:
-        <select class="" name="user[name_students]">
-          <% @students.each do |aluno| %>
-          <option value="<%= aluno.id %>">
-            <%= aluno.name_students %>
-          </option>
-          <% end %>
-        </select>
+  <div class="Container">
+    <table>
 
-        Pairs:
-        <select class="" name="user[name_pairs]">
+      <div class="Slim">
+        <div class="BoxSlim">
+
+        </div>
+        <div class="BoxNames">
           <% @pairs.each do |aluno| %>
-          <option value="<%= aluno.id %>">
-            <%= aluno.name_pairs %>
-          </option>
-          <% end %>
-        </select>
-
-
-        <input type="submit" name="name" value="Enviar">
-      </form>
-
-    </div>
-
-
-    <div class="Container">
-      <table>
-
-        <div class="Slim">
-          <div class="BoxSlim"></div>
-          <% @pairs.each do |aluno| %>
-          <div class="Names">
+          <div class="Par">
             <%= aluno.name_pairs %>
           </div>
           <% end %>
         </div>
+      </div>
+
 
         <div class="Fat">
 
@@ -88,18 +72,18 @@
 
             <% cont = 0 %>
             <% for i in 1..12 %>
-              <% for k in 1..i %>
-                <div class="Pareamento">
-                  X
-                </div>
-              <% end %>
+            <% for k in 1..i %>
+            <div class="Pareamento">
+              X
+            </div>
+            <% end %>
 
-              <% for j in i..11 %>
-              <% cont += 1 %>
-                <div class="Pareamento">
-                  <%=@pairings[cont].count %>
-                </div>
-              <% end %>
+            <% for j in i..11 %>
+            <% cont += 1 %>
+            <div class="Pareamento">
+              <%=@pairings[cont].count %>
+            </div>
+            <% end %>
 
 
             <% end %>
