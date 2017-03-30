@@ -56,43 +56,44 @@
       </div>
 
 
-        <div class="Fat">
+      <div class="Fat">
 
-          <div class="BoxSlim">
-            <% @students.each do |aluno| %>
-            <div class="Names">
-              <%= aluno.name_students %>
-            </div>
-            <% end %>
+        <div class="BoxSlim">
+          <% @students.each do |aluno| %>
+          <div class="Names">
+            <%= aluno.name_students %>
           </div>
-          <div class="BoxFat">
-
-            <br>
-
-
-            <% cont = 0 %>
-            <% for i in 1..12 %>
-            <% for k in 1..i %>
-            <div class="Pareamento">
-              X
-            </div>
-            <% end %>
-
-            <% for j in i..11 %>
-            <% cont += 1 %>
-            <div class="Pareamento">
-              <%=@pairings[cont].count %>
-            </div>
-            <% end %>
-
-
-            <% end %>
-
-          </div>
+          <% end %>
         </div>
-      </table>
+        <div class="BoxFat">
 
-    </div>
-  </section>
+          <br>
+
+
+          <% cont = 0 %>
+          <% for i in 1..12 %>
+          <% for k in 1..i %>
+          <div class="Pareamento">
+            X
+          </div>
+          <% end %>
+
+          <% r = i+1 %>
+          <% for j in r..12 %>
+          <div class="Pareamento">
+            <%=@pairings[cont].count %>
+          </div>
+          <% cont += 1 %>
+          <% end %>
+
+
+          <% end %>
+
+        </div>
+      </div>
+    </table>
+
+  </div>
+</section>
 </body>
 </html>
